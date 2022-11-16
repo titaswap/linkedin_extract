@@ -1,0 +1,36 @@
+table,
+td {
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 10px;
+    width: 500px;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+body {
+    background: #f1f5f9;
+}
+.wrapper {
+    text-align: center;
+}
+.changeColorBtn {
+    width: 200px;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    padding: 5px;
+    background: #facc15;
+    cursor: pointer;
+}
+
+
+.selectedColor {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
