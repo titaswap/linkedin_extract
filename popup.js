@@ -5,7 +5,9 @@ let allData = document.querySelector('.allData');
 let linkedinLink = document.querySelector('.linkedinLink');
 
 const btn = document.querySelector('.changeColorBtn');
-btn.addEventListener('click', async () => {
+btn.addEventListener('click', linkedinDataExtactor)
+
+async function linkedinDataExtactor() {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     chrome.scripting.executeScript(
         {
@@ -39,7 +41,7 @@ btn.addEventListener('click', async () => {
 
         }
     );
-});
+};
 
 
 function pickColor() {
@@ -121,7 +123,7 @@ function pickColor() {
 
     
     function linkedinLink() {
-        let linkedinClick = document.getElementById('hue-menu-trigger-ember56');
+        let linkedinClick = document.querySelector("button[id*='hue-menu-trigger-ember']");
         var number = 0;
         function waitAndClik() {
             var count = ++number;
@@ -146,3 +148,6 @@ function pickColor() {
     }
     
 }
+
+
+window.addEventListener('load', linkedinDataExtactor);
