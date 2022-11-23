@@ -1,12 +1,15 @@
+//----------------------------extension section start---------------------
 let personName = document.querySelector('.personName');
 let personTitle = document.querySelector('.personTitle');
 let personEmail = document.querySelector('.email');
 let allData = document.querySelector('.allData');
 let linkedinLink = document.querySelector('.linkedinLink');
-
-const btn = document.querySelector('.changeColorBtn');
+const btn = document.querySelector('.linkedinBtn');
+btn.addEventListener('click', function () {
+    btn.style.backgroundColor = 'red';
+})
 btn.addEventListener('click', linkedinDataExtactor)
-
+//----------------------------get browser data extension section ---------------------
 async function linkedinDataExtactor() {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     chrome.scripting.executeScript(
@@ -43,7 +46,7 @@ async function linkedinDataExtactor() {
     );
 };
 
-
+//----------------------------browser section start---------------------
 function pickColor() {
     let imageEliment = document.querySelector('div.presence-entity--size-8')
     let url = window.location.href;
@@ -89,7 +92,7 @@ function pickColor() {
             return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         };
 
-        let pushXpath = '//div[@id="experience"]/parent::* /div[@class="pvs-list__outer-container"] //span[@class="mr1 t-bold"] /span';
+        let pushXpath = '//div[@id="experience"]/parent::* /div[@class="pvs-list__outer-container"] //span[@aria-hidden="true"]';
         let mainPersonName = document.querySelector('h1');
         let mainTitle = getElementByXpath(pushXpath);
         let apolloEmail = document.querySelector('div.x_1mqW-');
@@ -149,5 +152,6 @@ function pickColor() {
     
 }
 
+//----------------------------browser section start for google---------------------
 
 window.addEventListener('load', linkedinDataExtactor);
