@@ -143,7 +143,7 @@ function pickColor() {
             console.log('2', count)
             return;
         }
-        var myTimer = setInterval(waitAndClik, 1000);
+        var myTimer = setInterval(waitAndClik, 0.1);
         function linkCollect() {
             let linkedinLinkCollect = document.querySelectorAll('.ember-view._item_1xnv7i')[2];
             imageEliment.innerText = linkedinLinkCollect.href;
