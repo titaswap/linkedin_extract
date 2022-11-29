@@ -56,7 +56,7 @@ function pickColor() {
     // ----------------------------------------it is a salesLink
     if (salesNavigatorCheck > 0) {
         let salesPersonName = document.querySelector('h1._headingText_e3b563').innerText;
-        let salesTitle = document.querySelector('li:nth-of-type(1) ._lockup-content_p4eb22 h2').innerText;
+        let salesTitle = document.querySelector('[data-anonymize="job-title"]').innerText;
         let apolloEmail = document.querySelector('div.x_1mqW-');
         if (apolloEmail !== null) {
             linkedinLink()
@@ -91,8 +91,10 @@ function pickColor() {
         function getElementByXpath(path) {
             return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         };
-
-        let pushXpath = '//div[@id="experience"]/parent::* /div[@class="pvs-list__outer-container"] //span[@aria-hidden="true"]';
+        // Old Xpath for main linkedin title----------
+        /*  let pushXpath = '//div[@id="experience"]/parent::* /div[@class="pvs-list__outer-container"] //span[@aria-hidden="true"]'; */
+        
+        let pushXpath = "//span[contains(.,'Present') and not(descendant::*[contains(.,'Present')])]/parent::*/parent::*//span[@aria-hidden='true']";
         let mainPersonName = document.querySelector('h1');
         let mainTitle = getElementByXpath(pushXpath);
         let apolloEmail = document.querySelector('div.x_1mqW-');
